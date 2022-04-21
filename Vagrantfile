@@ -5,8 +5,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.synced_folder ".", "/home/vagrant/app"
   # config.vm.synced_folder "./environment", "/home/vagrant/environment"
-  # config.vm.synced_folder "./app", "/home/vagrant/app1"
+  # config.vm.synced_folder "./app", "/home/vagrant/app"
 
-  # config.vm.provision "shell", path: "environment/provision.sh"
+  config.vm.provision "shell", path: "environment/provision.sh"
   
 end
