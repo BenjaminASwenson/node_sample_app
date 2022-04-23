@@ -39,8 +39,32 @@ cd into spec-test, to run test
                 `vm$ curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -`, refer to https://github.com/nodesource/distributions/blob/master/README.md
                 `vm$ sudo apt-get install nodejs -y` | `$ sudo apt-get install -y nodejs` (check)
         - cd app/app, or wherever the deepest app folder is (for now)
+            - becasue npm has to be started in a specific dir
             `vm$ npm install`
             `vm$ npm start`
             - get the port num
             {IP}:{port_num}
             e.g. `192.168.10.100:3000`
+
+
+- We need to give client the port number
+    - currently port 80 is the default port
+    - port 3000 in what we get when npm start (for our app)
+
+    -Now task:
+        - using nginx as a reverse proxy
+        - use nginx to listen on port 3000 send to 80
+        - how to configure the reverse proxy using nginx?
+        `vm$ cd /etc/nginx/sites-available`, where the deault file is located
+        `vm$ nano default`, do smt to the port
+            - when done
+                `vm$ cd app/app`
+                `vm$ npm start`
+
+                1. localhost:port(3000) == IP [DONE*]
+                # TODO done - but the app/public/sparta.png isnt showing yet]
+                
+                2. localhost/fibonacci = localhost:port(3000)/fibonacci (should work) 
+
+        - automate this on vagrant up
+        - pointers on Trello

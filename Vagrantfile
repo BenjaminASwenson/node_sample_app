@@ -14,7 +14,8 @@ Vagrant.configure("2") do |config|
 
   # in our case, we are creating a private network with the provided up address
   config.vm.network "private_network", ip: "192.168.10.100"
-
+  
+  # config.vm.provision "file", source: "./environment/default_new", destination: "./etc/nginx/sites-available/default_new"
 
   # config.vm.synced_folder sync a directory from local machine to the VM
   config.vm.synced_folder ".", "/home/vagrant/app"
@@ -27,5 +28,6 @@ Vagrant.configure("2") do |config|
   # in our case, we are using shell as the provisioner to run the
   # external script "provision.sh" we provided in the same directory
   config.vm.provision "shell", path: "environment/provision.sh"
+
   
 end

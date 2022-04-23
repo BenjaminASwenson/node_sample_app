@@ -26,13 +26,24 @@ sudo systemctl enable nginx
 # nodejs
 sudo apt-get install python-software-properties -y
 
+# v6
+# curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+
+# v12
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 
 sudo apt-get install -y nodejs
 
+sudo unlink /etc/nginx/sites-enabled/default
+sudo cp app/environment/reverse-proxy.conf /etc/nginx/sites-available/
+sudo ln -s /etc/nginx/sites-available/reverse-proxy.conf /etc/nginx/sites-enabled/reverse-proxy.conf
+
 # npm
 cd app/app/
-
 npm install
-
 npm start &
+
+
+# pm2
+# using npm to install pm2 in global mode (as a global package)
+# sudo npm install -g pm2
