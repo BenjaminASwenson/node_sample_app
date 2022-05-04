@@ -6,13 +6,17 @@ server {
 
     index index.html index.htm index.nginx-debian.html;
 
-    server_name _;
+    server_name 192.168.10.100;
 
     location / {
         proxy_pass http://localhost:3000;
         # proxy_pass http://192.168.10.100:3000;
         try_files $uri $uri/ =404;             
         
+    }
+    
+    location /fibonacci/ {
+                proxy_pass http://localhost:3000/fibonacci/;
     }
 
 }
